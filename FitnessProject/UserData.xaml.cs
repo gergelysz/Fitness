@@ -35,7 +35,7 @@ namespace FitnessProject
             }
         }
 
-        public void ExecuteQuery(String query)
+        public void ExecuteQuery(string query)
         {
             try
             {
