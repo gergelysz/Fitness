@@ -95,23 +95,12 @@ namespace FitnessProject
             !string.IsNullOrWhiteSpace(txtLastName.Text) &&
             !string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                //MySqlConnection mySqlConnection2 = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
-                //mySqlConnection2.Open();
-
-                //command = new MySqlCommand("insert into users values (@FirstName, @LastName, @Email, @PhoneNumber, @admin, @barcode", mySqlConnection2);
-                //command.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
-                //command.Parameters.AddWithValue("@LastName", txtLastName.Text);
-                //command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                //command.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text);
-                //command.Parameters.AddWithValue("@admin", 0);
-                //command.Parameters.AddWithValue("@barcode", ccc.ToString());
-
-                //command.ExecuteNonQuery();
-                string addUserQuery = "insert into users(FirstName, LastName, PhoneNumber, Email, admin, barcode) values('" +
+                string addUserQuery = "insert into users(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode) values('" +
                     txtFirstName.Text + "', '" +
                     txtLastName.Text + "', '" +
                     txtEmail.Text + "', '" +
                     txtPhoneNumber.Text + "', '" +
+                    datePickerBirthday.Text + "', '" +
                     0 + "', '" +
                     ccc.ToString() +
                     "');";
