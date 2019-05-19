@@ -1,0 +1,28 @@
+﻿<Window x:Class="FitnessProject.AdminData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessProject"
+        mc:Ignorable="d"
+        Title="AdminData" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dataGridInfo" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+            <ComboBox Name="comboBoxSelect" Margin="10" SelectionChanged="onSelectionChanged">
+                <ComboBoxItem Content="List all users" />
+                <ComboBoxItem Content="List all tickets" />
+                <ComboBoxItem Content="List all logins" />
+            </ComboBox>
+            <Button Click="btnSaveToTxt" Name="btnSaveToFile" Content="Save table to FitnessTableData.txt" Width="200"/>
+        </StackPanel>
+    </Grid>
+</Window>
