@@ -7,7 +7,7 @@
         <Style x:Key="loginWindowStyle" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="/welcome.jpg"/>
+                    <ImageBrush ImageSource="/Images/welcome.jpg"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -15,7 +15,7 @@
         <Style x:Key="userWindowStyle" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="/user.jpg"/>
+                    <ImageBrush ImageSource="/Images/user.jpg"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -23,7 +23,15 @@
         <Style x:Key="adminWindowStyle" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="/admin.jpg"/>
+                    <ImageBrush ImageSource="/Images/admin.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="registerWindowStyle" TargetType="Window">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/register.jpg"/>
                 </Setter.Value>
             </Setter>
         </Style>

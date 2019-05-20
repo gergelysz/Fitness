@@ -5,23 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
-        Height="520" Width="400" Background="#6d84a0" FontSize="15" FontFamily="Century Gothic">
-    <Border Background="#22272d" CornerRadius="20" Margin="20">
-        <StackPanel Margin="16">
-            <Label Content="Register new account" FontSize="20" HorizontalAlignment="Center" Foreground="White"/>
+        Style="{StaticResource registerWindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        Height="650" Width="650" FontSize="18" FontFamily="Century Gothic">
+    <Border Background="#283965" Opacity=".85">
+        <StackPanel Margin="16" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource ContentControlStyleBig}">REGISTER NEW ACCOUNT</TextBlock>
             <Separator/>
-            <Label Content="First name" Foreground="White" />
-            <TextBox Name="txtFirstName" Background="#3e4651" Foreground="White" FontSize="18" />
-            <Label Content="Last name" Foreground="White" />
-            <TextBox Name="txtLastName" Background="#3e4651" Foreground="White" FontSize="18" />
-            <Label Content="Email" Foreground="White" />
-            <TextBox Name="txtEmail" Background="#3e4651" Foreground="White" FontSize="18" />
-            <Label Content="Phone number" Foreground="White" />
-            <TextBox Name="txtPhoneNumber" Background="#3e4651" Foreground="White" FontSize="18" />
-            <Label Content="Date of birth" Foreground="White" />
-            <DatePicker Name="datePickerBirthday" />
-            <Button Name="btnSubmitRegister" Content="Submit registration" Margin="50 20" Background="#3e4651" Foreground="White" FontSize="16" Height="40" Click="btnSubmitRegister_Click" />
-            <Button Name="btnBackToLogin" Content="Back to login page" Margin="50 0" Background="#5b6777"  Foreground="White" FontSize="16" Height="30" Click="BtnBackToLogin_Click" />
+            <TextBlock Text="First name" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="txtFirstName" Style="{StaticResource InputControlStyle2}" />
+            <TextBlock Text="Last name" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="txtLastName" Style="{StaticResource InputControlStyle2}" />
+            <TextBlock Text="Email"  Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="txtEmail" Style="{StaticResource InputControlStyle2}" />
+            <TextBlock Text="Phone number" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="txtPhoneNumber" Style="{StaticResource InputControlStyle2}"/>
+            <TextBlock Text="Date of birth" Style="{StaticResource ContentControlStyleSmall}" />
+            <DatePicker Name="datePickerBirthday" Style="{StaticResource InputControlStyle2}" />
+            <Button Name="btnSubmitRegister" Style="{StaticResource ButtonStyle}" Content="SUBMIT" Click="btnSubmitRegister_Click" />
+            <Button Name="btnBackToLogin" Style="{StaticResource ButtonStyle}" Content="BACK TO LOGIN PAGE" Click="BtnBackToLogin_Click" Width="200" />
         </StackPanel>
     </Border>
 </Window>

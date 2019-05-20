@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icons8_sports_mode_48_TWV_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\FitnessIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -173,16 +173,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8_sports_mode_48_TWV_icon.ico" />
+    <Resource Include="Images\FitnessIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="welcome.jpg" />
+    <Resource Include="Images\welcome.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="user.jpg" />
+    <Resource Include="Images\user.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="admin.jpg" />
+    <Resource Include="Images\admin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
