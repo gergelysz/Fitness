@@ -38,18 +38,23 @@ namespace FitnessProject
                         currentUser.birthday = reader["birthday"].ToString();
                         currentUser.admin = (int)reader["admin"];
                         currentUser.barcode = reader["barcode"].ToString();
+                        mySqlConnection.Close();
 
                         // Check if admin or not
                         if(currentUser.admin == 1)
                         {
                             AdminData adminData = new AdminData();
                             adminData.Show();
+                            mySqlConnection.Close();
                             this.Close();
                         }
                         else
                         {
-                            UserData userData = new UserData();
-                            userData.Show();
+                            mySqlConnection.Close();
+                            TicketData ticketData = new TicketData();
+                            ticketData.Show();
+                            //UserData userData = new UserData();
+                            //userData.Show();
                             this.Close();
                         }  
                     }
@@ -58,9 +63,9 @@ namespace FitnessProject
                         MessageBox.Show("User with your barcode couldn't be found!", "Login failed");
                     }
                 }
-                catch (Exception)
+                catch (Exception i)
                 {
-                    MessageBox.Show("User with your barcode couldn't be found!", "Login failed");
+                    MessageBox.Show("User with your barcode couldn't be found!" + i.Message, "Login failed");
                 }
             }
             else

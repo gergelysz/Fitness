@@ -17,9 +17,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource TitleControlStyle}">YOUR TICKETS</TextBlock>
                 <TextBlock Name="txtTicketMessage" Style="{StaticResource invalidTicketStyle}">No valid ticket, buy a new one!</TextBlock>
-                <Button Name="btnTicketSelect" Style="{StaticResource ButtonStyle}" Content="SELECT TICKET"/>
-                <Button Name="btnTicketBuy" Style="{StaticResource ButtonStyle}" Content="BUY NEW TICKET"/>
+                <Button Name="btnTicketSelect" Style="{StaticResource ButtonStyle}" Content="SELECT TICKET" Click="BtnTicketSelect_Click"/>
+                <Button Name="btnTicketBuy" Style="{StaticResource ButtonStyle}" Content="BUY NEW TICKET" Click="BtnTicketBuy_Click"/>
             </StackPanel>
 
         </Grid>

@@ -39,7 +39,7 @@
         <Style x:Key="ticketDataStyle" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="/Images/ticket.jpg"/>
+                    <ImageBrush ImageSource="/Images/tickets.jpg"/>
                 </Setter.Value>
             </Setter>
         </Style>
