@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
         Style="{StaticResource adminWindowStyle}"
-        Title="Admin panel" Height="550" Width="550"
+        Title="Admin panel" Height="550" Width="550" FontFamily="Century Gothic"
         WindowStartupLocation="CenterScreen">
     <Border Background="#283965" Opacity=".85">
         <Grid>

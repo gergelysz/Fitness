@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace FitnessProject
@@ -79,16 +80,25 @@ namespace FitnessProject
             reader.Close();
             CloseConnection();
 
-            Random rand;
-            int ccc;
-
+            // Generate string of length 9 with random numbers.
+            // Repeat until it's not in the registeredBarCodes list.
+            var numbers = "0123456789";
+            var stringChars = new char[9];
+            string finalString;
             do
             {
-                rand = new Random(100);
-                ccc = rand.Next(000000000, 999999999);
-            } while (registeredBarcodes.Contains(ccc.ToString()));
+                var random = new Random();
 
-            MessageBox.Show("Login barcode created: " + ccc, "Barcode");
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = numbers[random.Next(numbers.Length)];
+                }
+
+                finalString = new string(stringChars);
+
+            } while (registeredBarcodes.Contains(finalString));
+
+            MessageBox.Show("Login barcode created: " + finalString, "Barcode");
 
 
             if (!string.IsNullOrWhiteSpace(txtFirstName.Text) &&
@@ -102,7 +112,7 @@ namespace FitnessProject
                     txtPhoneNumber.Text + "', '" +
                     datePickerBirthday.Text + "', '" +
                     0 + "', '" +
-                    ccc.ToString() +
+                    finalString +
                     "');";
 
                 ExecuteQuery(addUserQuery);

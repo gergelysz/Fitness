@@ -59,5 +59,16 @@ namespace FitnessProject
                 CloseConnection();
             }
         }
+
+        private void deleteAccount(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete your account?", "Delete account", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                ExecuteQuery("delete from users where barcode like " + MainWindow.currentUser.barcode);
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            } 
+        }
     }
 }
