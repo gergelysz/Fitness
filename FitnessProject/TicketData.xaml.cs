@@ -25,17 +25,12 @@ namespace FitnessProject
         public TicketData()
         {
             InitializeComponent();
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessdb";
+
             MySqlConnection conn = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
-
             conn.Open();
-
-            //MySqlCommand comm = new MySqlCommand("select count(*) from tickets where barcode like" + MainWindow.barcode, conn);
 
             MySqlCommand comm = new MySqlCommand("select count(*) from tickets where barcode like " + MainWindow.barcode, conn);
             int count = int.Parse(comm.ExecuteScalar().ToString());
-            //Console.WriteLine(comm.ExecuteScalar());
-
 
             if (count > 0)
             {
