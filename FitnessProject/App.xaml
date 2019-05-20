@@ -36,6 +36,14 @@
             </Setter>
         </Style>
 
+        <Style x:Key="ticketDataStyle" TargetType="Window">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/ticket.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="TitleControlStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="22"/>
@@ -75,6 +83,27 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        <Style x:Key="invalidTicketStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0,20,0,5"/>
+            <!--<Setter Property="TextDecorations">
+                <Setter.Value>
+                    <TextDecorationCollection>
+                        <TextDecoration Location="Underline">
+                            <TextDecoration.Pen>
+                                <Pen Thickness="1.7" Brush="#1161ee"/>
+                            </TextDecoration.Pen>
+                        </TextDecoration>
+                    </TextDecorationCollection>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+
 
         <Style x:Key="ContentControlStyleBig" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>

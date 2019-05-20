@@ -1,0 +1,27 @@
+﻿<Window x:Class="FitnessProject.TicketData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessProject"
+        mc:Ignorable="d"
+        Title="Ticket panel" Height="550" Width="550"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource ticketDataStyle}">
+    <Border Background="#283965" Opacity=".85">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="txtTicketMessage" Style="{StaticResource invalidTicketStyle}">No valid ticket, buy a new one!</TextBlock>
+                <Button Name="btnTicketSelect" Style="{StaticResource ButtonStyle}" Content="SELECT TICKET"/>
+                <Button Name="btnTicketBuy" Style="{StaticResource ButtonStyle}" Content="BUY NEW TICKET"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
