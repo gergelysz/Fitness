@@ -1,8 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FitnessProject.Data;
+using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace FitnessProject
@@ -12,7 +16,6 @@ namespace FitnessProject
         public AdminData()
         {
             InitializeComponent();
-
             RunQuery("select * from users");
         }
 
@@ -49,12 +52,18 @@ namespace FitnessProject
             switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
+                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from users");
                     break;
                 case 1:
-                    RunQuery("select * from tickets");
+                    RunQuery("select * from tickets");  
+                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    comboBoxSelectListOptions.Visibility = Visibility.Visible;
                     break;
                 case 2:
+                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from logins");
                     break;
             }
@@ -99,6 +108,58 @@ namespace FitnessProject
         {
             RunQuery("select * from users where concat(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode)" +
                 " like '%" + txtBoxSearchUser.Text + "%'");
+        }
+
+        private void onSelectionChangedList1(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxSelectListOptions.Visibility == Visibility.Visible)
+            {
+                switch(comboBoxSelectListOptions.SelectedIndex)
+                {
+                    case 0:
+                        RunQuery("select * from tickets where " +
+                            "(valid_from is null and valid_until is null and nr_of_entries > 0) " +
+                            "or " +
+                            "(valid_from is not null and valid_until is not null and " +
+                            "DATE(valid_from) <= DATE(NOW()) and DATE(valid_until) >= DATE(NOW()))");
+                        break;
+                    case 1:
+                        RunQuery("select * from tickets where " +
+                            "(valid_from is null and valid_until is null and nr_of_entries = 0) " +
+                            "or " +
+                            "(valid_from is not null and valid_until is not null and " +
+                            "(DATE(valid_from) > DATE(NOW()) or DATE(valid_until) < DATE(NOW())))");
+                        break;
+                }
+            }
+        }
+
+        private void btnDeleteSelectedRow(object sender, RoutedEventArgs e)
+        {
+            DataRowView row;
+            switch (comboBoxSelect.SelectedIndex)
+            {
+                case 0:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from users where barcode like " + row["barcode"].ToString());
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 1:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from tickets where id = " + (int)row["id"]);
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 2:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from logins where barcode like " + row["barcode"].ToString());
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
+        }
+
+        private void dataGridRowSelected(object sender, RoutedEventArgs e)
+        {
+            btnDeleteRow.Visibility = Visibility.Visible;
         }
     }
 }

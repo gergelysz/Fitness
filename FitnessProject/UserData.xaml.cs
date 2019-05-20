@@ -64,7 +64,7 @@ namespace FitnessProject
         {
             if (MessageBox.Show("Are you sure you want to delete your account?", "Delete account", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                ExecuteQuery("delete from users where barcode like " + MainWindow.currentUser.barcode);
+                ExecuteQuery("update users set active = 0 where barcode like " + MainWindow.currentUser.barcode);
                 MainWindow main = new MainWindow();
                 main.Show();
                 this.Close();

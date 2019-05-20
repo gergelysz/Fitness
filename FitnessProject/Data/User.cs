@@ -15,5 +15,6 @@ namespace FitnessProject.Data
         public string birthday { get; set; }
         public int admin { get; set; }
         public string barcode { get; set; }
+        public bool active { get; set; }
     }
 }
