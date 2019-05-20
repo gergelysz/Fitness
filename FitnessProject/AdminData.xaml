@@ -11,12 +11,13 @@
     <Border Background="#283965" Opacity=".85">
         <StackPanel>
             <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource ContentControlStyleBig}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
-            <DataGrid Name="dataGridInfo" IsReadOnly="True" Height="200" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
+            <DataGrid Name="dataGridInfo" IsReadOnly="True" Height="200" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" DataGridCell.Selected="dataGridRowSelected" />
             <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
                 <ComboBoxItem Content="List all users" />
                 <ComboBoxItem Content="List all tickets" />
                 <ComboBoxItem Content="List all logins" />
             </ComboBox>
+            <Button Style="{StaticResource ButtonStyle}" Name="btnDeleteRow" Content="DELETE SELECTED ROW" Click="btnDeleteSelectedRow"  Height="30" Width="200" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <CheckBox Visibility="Collapsed" Name="checkText1" Foreground="White">Text1</CheckBox>
                 <CheckBox Visibility="Collapsed" Name="checkText2" Foreground="White">Text2</CheckBox>

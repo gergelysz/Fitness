@@ -40,7 +40,7 @@ namespace FitnessProject
                             currentUser.birthday = reader["birthday"].ToString();
                             currentUser.admin = (int)reader["admin"];
                             currentUser.barcode = reader["barcode"].ToString();
-                            currentUser.active = Convert.ToBoolean(reader["barcode"]);
+                            currentUser.active = Convert.ToBoolean(reader["active"]);
                             mySqlConnection.Close();
 
                             // Check if admin or not

@@ -52,14 +52,17 @@ namespace FitnessProject
             switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
+                    //btnDeleteRow.Visibility = Visibility.Visible;
                     comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from users");
                     break;
                 case 1:
-                    RunQuery("select * from tickets");                  
+                    RunQuery("select * from tickets");  
+                    //btnDeleteRow.Visibility = Visibility.Visible;
                     comboBoxSelectListOptions.Visibility = Visibility.Visible;
                     break;
                 case 2:
+                    //btnDeleteRow.Visibility = Visibility.Visible;
                     comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from logins");
                     break;
@@ -129,6 +132,34 @@ namespace FitnessProject
                         break;
                 }
             }
+        }
+
+        private void btnDeleteSelectedRow(object sender, RoutedEventArgs e)
+        {
+            DataRowView row;
+            switch (comboBoxSelect.SelectedIndex)
+            {
+                case 0:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from users where barcode like " + row["barcode"].ToString());
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 1:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from tickets where id = " + (int)row["id"]);
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 2:
+                    row = (DataRowView)dataGridInfo.SelectedItems[0];
+                    RunQuery("delete from logins where barcode like " + row["barcode"].ToString());
+                    MessageBox.Show("Successfully deleted row!", "Delete done", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
+        }
+
+        private void dataGridRowSelected(object sender, RoutedEventArgs e)
+        {
+            btnDeleteRow.Visibility = Visibility.Visible;
         }
     }
 }
