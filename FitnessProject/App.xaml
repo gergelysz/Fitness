@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:FitnessProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
         <Style x:Key="loginWindowStyle" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
@@ -64,24 +65,11 @@
             </Setter>
         </Style>
 
-        <Style x:Key="TitleControlStyleUser" TargetType="TextBlock">
+        <Style x:Key="validTicketTextStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="0,20"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="0,20,0,5"/>
-            <Setter Property="TextDecorations">
-                <Setter.Value>
-                    <TextDecorationCollection>
-                        <TextDecoration Location="Underline">
-                            <TextDecoration.Pen>
-                                <Pen Thickness="1.7" Brush="#1161ee"/>
-                            </TextDecoration.Pen>
-                        </TextDecoration>
-                    </TextDecorationCollection>
-                </Setter.Value>
-            </Setter>
         </Style>
         
         <Style x:Key="invalidTicketStyle" TargetType="TextBlock">
@@ -91,17 +79,6 @@
             <Setter Property="Margin" Value="0,20"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Padding" Value="0,20,0,5"/>
-            <!--<Setter Property="TextDecorations">
-                <Setter.Value>
-                    <TextDecorationCollection>
-                        <TextDecoration Location="Underline">
-                            <TextDecoration.Pen>
-                                <Pen Thickness="1.7" Brush="#1161ee"/>
-                            </TextDecoration.Pen>
-                        </TextDecoration>
-                    </TextDecorationCollection>
-                </Setter.Value>
-            </Setter>-->
         </Style>
 
 
@@ -127,6 +104,7 @@
             <Setter Property="Margin" Value="0,25,0,0"/>
             <Setter Property="Padding" Value="0,0,0,2"/>
         </Style>
+        
         <Style x:Key="InputControlStyle">
             <Setter Property="Control.FontSize" Value="12"/>
             <Setter Property="Control.Foreground" Value="White"/>
@@ -140,7 +118,6 @@
                     <SolidColorBrush Color="#fff" Opacity="0.1"/>
                 </Setter.Value>
             </Setter>
-
             <Style.Triggers>
                 <Trigger Property="Control.IsFocused" Value="True">
                     <Setter Property="Control.BorderBrush" Value="#4D90FE"/>
@@ -161,7 +138,6 @@
                     <SolidColorBrush Color="#fff" Opacity="0.1"/>
                 </Setter.Value>
             </Setter>
-
             <Style.Triggers>
                 <Trigger Property="Control.IsFocused" Value="True">
                     <Setter Property="Control.BorderBrush" Value="#4D90FE"/>
@@ -191,6 +167,13 @@
                     <DropShadowEffect ShadowDepth="5"/>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="comboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="150" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
 
 

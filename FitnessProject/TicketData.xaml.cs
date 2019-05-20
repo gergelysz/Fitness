@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FitnessProject.Data;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,23 +23,79 @@ namespace FitnessProject
     /// </summary>
     public partial class TicketData : Window
     {
+        MySqlConnection conn = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
+        public List<Ticket> tickets = new List<Ticket>();
+
         public TicketData()
         {
             InitializeComponent();
 
-            MySqlConnection conn = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
             conn.Open();
+            MySqlCommand comm = new MySqlCommand("select * from tickets where " +
+                            "(valid_from is null and valid_until is null and nr_of_entries > 0) " +
+                            "or " +
+                            "(valid_from is not null and valid_until is not null and " +
+                            "DATE(valid_from) <= DATE(NOW()) and DATE(valid_until) >= DATE(NOW())) and barcode like '" + MainWindow.barcode + "'", conn);
+            //int count = int.Parse(comm.ExecuteScalar().ToString());
+            MySqlDataReader reader = comm.ExecuteReader();
+            //Console.WriteLine(reader);
+            
 
-            MySqlCommand comm = new MySqlCommand("select count(*) from tickets where barcode like " + MainWindow.barcode, conn);
-            int count = int.Parse(comm.ExecuteScalar().ToString());
-
-            if (count > 0)
+            if (reader.HasRows)
             {
-                txtTicketMessage.Visibility = Visibility.Hidden;
+                txtTicketMessage.Visibility = Visibility.Collapsed;
+                comboBoxTickets.Visibility = Visibility.Visible;
+                btnTicketSelect.Visibility = Visibility.Visible;
+                comboLabelTicket.Visibility = Visibility.Visible;
+                optionsTextBlockTicket.Visibility = Visibility.Visible;
+
+                while (reader.Read())
+                {
+                    Ticket ticket = new Ticket();
+                    ticket.id = (int)reader["id"];
+                    ticket.valid_from = reader["valid_from"].ToString();
+                    ticket.valid_until = reader["valid_until"].ToString();
+                    ticket.nr_of_entries = (int)reader["nr_of_entries"];
+                    ticket.nr_of_entries_day = (int)reader["nr_of_entries_day"];
+                    ticket.hour_from = (int)reader["hour_from"];
+                    ticket.hour_until = (int)reader["hour_until"];
+                    ticket.weekend = (bool)reader["weekend"];
+                    ticket.barcode = reader["barcode"].ToString();
+                    tickets.Add(ticket);
+                }
+                //Console.WriteLine(tickets.Capacity);
+                tickets.TrimExcess();
+
+                for (int i = 0; i < tickets.Capacity; i++)
+                {
+                    if(tickets[i].valid_until != "")
+                    {
+                        optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + (i + 1) + " Valid until: " +  tickets[i].valid_until;
+                    }
+                    else
+                    {
+                        optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + (i + 1) + " Entry remained: " + tickets[i].nr_of_entries;
+                        
+                    }
+                    if (tickets[i].weekend)
+                    {
+                        optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + " (weekend) ";
+                    }
+                    optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + ", number of daily entries: " + tickets[i].nr_of_entries_day;
+                    if(tickets[i].hour_from != 0 || tickets[i].hour_until != 24)
+                    {
+                        optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + ", between: " + tickets[i].hour_from + " and " + tickets[i].hour_until;
+                    }
+                    optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + "\n";
+                    comboBoxTickets.Items.Add(i + 1);
+                    //Console.WriteLine(tickets[i].weekend);
+                }
             }
             else
             {
-                btnTicketSelect.Visibility = Visibility.Hidden;
+                comboBoxTickets.Visibility = Visibility.Collapsed;
+                btnTicketSelect.Visibility = Visibility.Collapsed;
+                comboLabelTicket.Visibility = Visibility.Collapsed;
             }
         }
 
