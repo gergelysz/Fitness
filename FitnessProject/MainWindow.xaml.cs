@@ -35,6 +35,7 @@ namespace FitnessProject
                         currentUser.lastName = reader["LastName"].ToString();
                         currentUser.email = reader["Email"].ToString();
                         currentUser.phoneNumber = reader["PhoneNumber"].ToString();
+                        currentUser.birthday = reader["birthday"].ToString();
                         currentUser.admin = (int)reader["admin"];
                         currentUser.barcode = reader["barcode"].ToString();
 
