@@ -18,7 +18,7 @@ namespace FitnessProject
 
         private void RunQuery(string query)
         {
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb";
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessdb";
             MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, mySqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -36,10 +36,6 @@ namespace FitnessProject
                     {
 
                     }
-                }
-                else
-                {
-                    MessageBox.Show("query executed");
                 }
             }
             catch (Exception e)
@@ -59,6 +55,7 @@ namespace FitnessProject
                     RunQuery("select * from tickets");
                     break;
                 case 2:
+                    RunQuery("select * from logins");
                     break;
             }
         }
@@ -86,7 +83,7 @@ namespace FitnessProject
                     break;
             }
 
-            if(file != null)
+            if (file != null)
             {
                 file.WriteLine(result.Replace(',', ' '));
                 file.Close();
@@ -96,6 +93,12 @@ namespace FitnessProject
         private void btnSaveToTxt(object sender, RoutedEventArgs e)
         {
             ExportToExcel();
+        }
+
+        private void btnSearchUser(object sender, RoutedEventArgs e)
+        {
+            RunQuery("select * from users where concat(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode)" +
+                " like '%" + txtBoxSearchUser.Text + "%'");
         }
     }
 }
