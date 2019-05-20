@@ -17,6 +17,17 @@
                 <ComboBoxItem Content="List all tickets" />
                 <ComboBoxItem Content="List all logins" />
             </ComboBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox Visibility="Collapsed" Name="checkText1" Foreground="White">Text1</CheckBox>
+                <CheckBox Visibility="Collapsed" Name="checkText2" Foreground="White">Text2</CheckBox>
+                <ComboBox Visibility="Collapsed" Name="comboBoxSelectListOptions" SelectionChanged="onSelectionChangedList1">
+                    <ComboBoxItem Content="Active tickets"/>
+                    <ComboBoxItem Content="Inactive tickets"/>
+                </ComboBox>
+                <ComboBox Visibility="Collapsed" Name="comboBoxSelectListOptions2" />
+                <ComboBox Visibility="Collapsed" Name="comboBoxSelectListOptions3" />
+                <CheckBox Visibility="Collapsed" Name="checkText3" Foreground="White">Text3</CheckBox>
+            </StackPanel>
             <Button Style="{StaticResource ButtonStyle}" Margin="10" Click="btnSaveToTxt" Name="btnSaveToFile" Content="SAVE TABLE DATA"/>
             <TextBlock Text="OR SEARCH FOR USER" HorizontalAlignment="Center" Style="{StaticResource ContentControlStyleSmall}"/>
             <TextBox Width="250" Name="txtBoxSearchUser" Style="{StaticResource InputControlStyle2}" />

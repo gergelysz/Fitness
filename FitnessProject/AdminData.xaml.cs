@@ -1,8 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FitnessProject.Data;
+using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace FitnessProject
@@ -12,7 +16,6 @@ namespace FitnessProject
         public AdminData()
         {
             InitializeComponent();
-
             RunQuery("select * from users");
         }
 
@@ -49,12 +52,15 @@ namespace FitnessProject
             switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
+                    comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from users");
                     break;
                 case 1:
-                    RunQuery("select * from tickets");
+                    RunQuery("select * from tickets");                  
+                    comboBoxSelectListOptions.Visibility = Visibility.Visible;
                     break;
                 case 2:
+                    comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from logins");
                     break;
             }
@@ -99,6 +105,30 @@ namespace FitnessProject
         {
             RunQuery("select * from users where concat(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode)" +
                 " like '%" + txtBoxSearchUser.Text + "%'");
+        }
+
+        private void onSelectionChangedList1(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxSelectListOptions.Visibility == Visibility.Visible)
+            {
+                switch(comboBoxSelectListOptions.SelectedIndex)
+                {
+                    case 0:
+                        RunQuery("select * from tickets where " +
+                            "(valid_from is null and valid_until is null and nr_of_entries > 0) " +
+                            "or " +
+                            "(valid_from is not null and valid_until is not null and " +
+                            "DATE(valid_from) <= DATE(NOW()) and DATE(valid_until) >= DATE(NOW()))");
+                        break;
+                    case 1:
+                        RunQuery("select * from tickets where " +
+                            "(valid_from is null and valid_until is null and nr_of_entries = 0) " +
+                            "or " +
+                            "(valid_from is not null and valid_until is not null and " +
+                            "(DATE(valid_from) > DATE(NOW()) or DATE(valid_until) < DATE(NOW())))");
+                        break;
+                }
+            }
         }
     }
 }

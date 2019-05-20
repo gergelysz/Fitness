@@ -31,28 +31,37 @@ namespace FitnessProject
                     MySqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        currentUser.firstName = reader["FirstName"].ToString();
-                        currentUser.lastName = reader["LastName"].ToString();
-                        currentUser.email = reader["Email"].ToString();
-                        currentUser.phoneNumber = reader["PhoneNumber"].ToString();
-                        currentUser.birthday = reader["birthday"].ToString();
-                        currentUser.admin = (int)reader["admin"];
-                        currentUser.barcode = reader["barcode"].ToString();
-                        mySqlConnection.Close();
-
-                        // Check if admin or not
-                        if(currentUser.admin == 1)
+                        if(Convert.ToBoolean(reader["active"]))
                         {
-                            AdminData adminData = new AdminData();
-                            adminData.Show();
-                            this.Close();
+                            currentUser.firstName = reader["FirstName"].ToString();
+                            currentUser.lastName = reader["LastName"].ToString();
+                            currentUser.email = reader["Email"].ToString();
+                            currentUser.phoneNumber = reader["PhoneNumber"].ToString();
+                            currentUser.birthday = reader["birthday"].ToString();
+                            currentUser.admin = (int)reader["admin"];
+                            currentUser.barcode = reader["barcode"].ToString();
+                            currentUser.active = Convert.ToBoolean(reader["barcode"]);
+                            mySqlConnection.Close();
+
+                            // Check if admin or not
+                            if (currentUser.admin == 1)
+                            {
+                                AdminData adminData = new AdminData();
+                                adminData.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                TicketData ticketData = new TicketData();
+                                ticketData.Show();
+                                this.Close();
+                            }
                         }
                         else
                         {
-                            TicketData ticketData = new TicketData();
-                            ticketData.Show();
-                            this.Close();
-                        }  
+                            MessageBox.Show("Your account has been deleted, please contact us for more help!", "Account deleted", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        
                     }
                     else
                     {
