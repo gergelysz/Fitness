@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
-        Title="UserData" Height="550" Width="550"
+        Title="User panel" Height="550" Width="550"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource userWindowStyle}">
     <Border Background="#283965" Opacity=".85">
@@ -15,12 +15,17 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
                 <TextBlock Text="Your account details: " Style="{StaticResource TitleControlStyleUser}"/>
-                <TextBlock Text="Text1" Name="txtBlockAccountInfo" Style="{StaticResource ContentControlStyleBig}" />
-                <TextBlock Text="Text2" Name="txtBlockTicketInfo" Style="{StaticResource ContentControlStyleSmall}" />
+                <!--<TextBlock Text="Text1" Name="txtBlockAccountInfo" Style="{StaticResource ContentControlStyleBig}" />
+                <TextBlock Text="Text2" Name="txtBlockTicketInfo" Style="{StaticResource ContentControlStyleSmall}" />-->
+                <TextBox Name="txtBoxFirstName" Text="FirstName" Style="{StaticResource InputControlStyle2}"/>
+                <TextBox Name="txtBoxLastName" Text="LastName" Style="{StaticResource InputControlStyle2}"/>
+                <TextBox Name="txtBoxEmail" Text="Email" Style="{StaticResource InputControlStyle2}"/>
+                <TextBox Name="txtBoxPhoneNumber" Text="PhoneNumber" Style="{StaticResource InputControlStyle2}"/>
+                <DatePicker Name="datePickBirthUser" />
+                <Button Name="btnUserUpdateData" Style="{StaticResource ButtonStyle}" Content="UPDATE"/>
             </StackPanel>
 
         </Grid>

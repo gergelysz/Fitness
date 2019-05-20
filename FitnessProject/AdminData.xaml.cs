@@ -1,10 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace FitnessProject
 {
@@ -51,7 +50,7 @@ namespace FitnessProject
 
         private void onSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(comboBoxSelect.SelectedIndex)
+            switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
                     RunQuery("select * from users");
@@ -64,42 +63,39 @@ namespace FitnessProject
             }
         }
 
-        private void saveDataToFile()
+        private void ExportToExcel()
         {
-            string file_name;
-            StringBuilder stringBuilder = new StringBuilder();
+            dataGridInfo.SelectAllCells();
+            dataGridInfo.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+            ApplicationCommands.Copy.Execute(null, dataGridInfo);
+            String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
+            String result = (string)Clipboard.GetData(DataFormats.Text);
+            dataGridInfo.UnselectAllCells();
+            System.IO.StreamWriter file = null;
 
             switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
-                    file_name = "FitnessTableDataUsers.txt";
-                    stringBuilder.Append("FirstName\t\tLastName\t\tEmail\t\tPhoneNumber\t\tadmin\t\tbarcode\n");
-                    foreach (DataRowView rowView in dataGridInfo.ItemsSource)
-                    {
-                        stringBuilder.Append(rowView[0].ToString() + "\t\t" +
-                            rowView[1].ToString() + "\t\t" +
-                            rowView[2].ToString() + "\t\t" +
-                            rowView[3].ToString() + "\t\t" +
-                            rowView[4].ToString() + "\t\t" +
-                            rowView[5].ToString() + "\n");
-                    }
+                    file = new System.IO.StreamWriter("TableData_Users.xls");
                     break;
                 case 1:
-                    file_name = "FitnessTableDataTickets.txt";
+                    file = new System.IO.StreamWriter("TableData_Tickets.xls");
                     break;
                 case 2:
-                    file_name = "FitnessTableDataLogins.txt";
+                    file = new System.IO.StreamWriter("TableData_Logins.xls");
                     break;
-                default:
-                    return;
             }
 
-            File.WriteAllText(file_name, stringBuilder.ToString());
+            if(file != null)
+            {
+                file.WriteLine(result.Replace(',', ' '));
+                file.Close();
+            }
         }
 
         private void btnSaveToTxt(object sender, RoutedEventArgs e)
         {
-            saveDataToFile();
+            ExportToExcel();
         }
     }
 }

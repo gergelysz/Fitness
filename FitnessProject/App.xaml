@@ -20,6 +20,14 @@
             </Setter>
         </Style>
 
+        <Style x:Key="adminWindowStyle" TargetType="Window">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/admin.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="TitleControlStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="22"/>
@@ -85,8 +93,29 @@
         <Style x:Key="InputControlStyle">
             <Setter Property="Control.FontSize" Value="12"/>
             <Setter Property="Control.Foreground" Value="White"/>
-            <Setter Property="Control.Width" Value="350"/>
+            <Setter Property="Control.Width" Value="250"/>
             <Setter Property="Control.Height" Value="40"/>
+            <Setter Property="Control.Padding" Value="5,5,0,0"/>
+            <Setter Property="Control.BorderBrush" Value="#fff"/>
+            <Setter Property="Control.BorderThickness" Value="2"/>
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#fff" Opacity="0.1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.BorderBrush" Value="#4D90FE"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="InputControlStyle2">
+            <Setter Property="Control.FontSize" Value="12"/>
+            <Setter Property="Control.Foreground" Value="White"/>
+            <Setter Property="Control.Width" Value="350"/>
+            <Setter Property="Control.Height" Value="30"/>
             <Setter Property="Control.Padding" Value="5,5,0,0"/>
             <Setter Property="Control.BorderBrush" Value="#fff"/>
             <Setter Property="Control.BorderThickness" Value="2"/>
@@ -107,6 +136,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="150" />
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Margin" Value="0,25,0,15"/>
             <Setter Property="Padding" Value="15,20"/>

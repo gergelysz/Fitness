@@ -13,10 +13,10 @@ namespace FitnessProject
         {
             InitializeComponent();
 
-            txtBlockAccountInfo.Text = MainWindow.currentUser.firstName + " " +
-                MainWindow.currentUser.lastName;
-
-            txtBlockTicketInfo.Text = "Your ticket code: " + MainWindow.currentUser.barcode;
+            txtBoxFirstName.Text = MainWindow.currentUser.firstName;
+            txtBoxLastName.Text = MainWindow.currentUser.lastName;
+            txtBoxEmail.Text = MainWindow.currentUser.email;
+            txtBoxPhoneNumber.Text = MainWindow.currentUser.phoneNumber;
         }
 
         public void OpenConnection()

@@ -5,24 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
-        Title="AdminData" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <DataGrid Name="dataGridInfo" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-            <ComboBox Name="comboBoxSelect" Margin="10" SelectionChanged="onSelectionChanged">
-                <ComboBoxItem Content="List all users" />
-                <ComboBoxItem Content="List all tickets" />
-                <ComboBoxItem Content="List all logins" />
-            </ComboBox>
-            <Button Click="btnSaveToTxt" Name="btnSaveToFile" Content="Save table to FitnessTableData.txt" Width="200"/>
-        </StackPanel>
-    </Grid>
+        Style="{StaticResource adminWindowStyle}"
+        Title="Admin panel" Height="550" Width="550"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#283965" Opacity=".85">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dataGridInfo" IsReadOnly="True" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
+                    <ComboBoxItem Content="List all users" />
+                    <ComboBoxItem Content="List all tickets" />
+                    <ComboBoxItem Content="List all logins" />
+                </ComboBox>
+                <Button Style="{StaticResource ButtonStyle}" Click="btnSaveToTxt" Name="btnSaveToFile" Content="SAVE TABLE DATA"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

@@ -12,12 +12,8 @@ namespace FitnessProject.Data
         public string lastName { get; set; }
         public string email { get; set; }
         public string phoneNumber { get; set; }
+        public string birthday { get; set; }
         public int admin { get; set; }
         public string barcode { get; set; }
-
-        public override string ToString()
-        {
-            return firstName + " " + lastName + " " + email + " " + phoneNumber + " " + admin + " " + barcode; 
-        }
     }
 }
