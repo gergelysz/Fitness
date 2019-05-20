@@ -18,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace FitnessProject
 {
-    /// <summary>
-    /// Interaction logic for TicketData.xaml
-    /// </summary>
     public partial class TicketData : Window
     {
         MySqlConnection conn = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
@@ -32,14 +29,11 @@ namespace FitnessProject
 
             conn.Open();
             MySqlCommand comm = new MySqlCommand("select * from tickets where " +
-                            "(valid_from is null and valid_until is null and nr_of_entries > 0) " +
+                            "((valid_from is null and valid_until is null and nr_of_entries > 0) " +
                             "or " +
                             "(valid_from is not null and valid_until is not null and " +
-                            "DATE(valid_from) <= DATE(NOW()) and DATE(valid_until) >= DATE(NOW())) and barcode like '" + MainWindow.barcode + "'", conn);
-            //int count = int.Parse(comm.ExecuteScalar().ToString());
+                            "DATE(valid_from) <= DATE(NOW()) and DATE(valid_until) >= DATE(NOW()))) and barcode like " + MainWindow.barcode, conn);
             MySqlDataReader reader = comm.ExecuteReader();
-            //Console.WriteLine(reader);
-            
 
             if (reader.HasRows)
             {
@@ -63,7 +57,6 @@ namespace FitnessProject
                     ticket.barcode = reader["barcode"].ToString();
                     tickets.Add(ticket);
                 }
-                //Console.WriteLine(tickets.Capacity);
                 tickets.TrimExcess();
 
                 for (int i = 0; i < tickets.Capacity; i++)
@@ -88,7 +81,6 @@ namespace FitnessProject
                     }
                     optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + "\n";
                     comboBoxTickets.Items.Add(i + 1);
-                    //Console.WriteLine(tickets[i].weekend);
                 }
             }
             else
@@ -101,6 +93,7 @@ namespace FitnessProject
 
         private void BtnTicketSelect_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 
