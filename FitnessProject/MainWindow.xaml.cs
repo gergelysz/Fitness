@@ -45,16 +45,12 @@ namespace FitnessProject
                         {
                             AdminData adminData = new AdminData();
                             adminData.Show();
-                            mySqlConnection.Close();
                             this.Close();
                         }
                         else
                         {
-                            mySqlConnection.Close();
                             TicketData ticketData = new TicketData();
                             ticketData.Show();
-                            //UserData userData = new UserData();
-                            //userData.Show();
                             this.Close();
                         }  
                     }
