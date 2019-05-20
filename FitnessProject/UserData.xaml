@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
-        Title="UserData" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <TextBlock Text="Your account details: "/>
-            <TextBlock Name="txtBlockAccountInfo" />
-            <TextBlock Name="txtBlockTicketInfo" />
-        </StackPanel>
-        
-    </Grid>
+        Title="UserData" Height="550" Width="550"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource userWindowStyle}">
+    <Border Background="#283965" Opacity=".85">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+                <TextBlock Text="Your account details: " Style="{StaticResource TitleControlStyleUser}"/>
+                <TextBlock Text="Text1" Name="txtBlockAccountInfo" Style="{StaticResource ContentControlStyleBig}" />
+                <TextBlock Text="Text2" Name="txtBlockTicketInfo" Style="{StaticResource ContentControlStyleSmall}" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
 </Window>
