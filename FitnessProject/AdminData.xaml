@@ -6,26 +6,21 @@
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
         Style="{StaticResource adminWindowStyle}"
-        Title="Admin panel" Height="550" Width="550" FontFamily="Century Gothic"
+        Title="Admin panel" Height="650" Width="650" FontFamily="Century Gothic"
         WindowStartupLocation="CenterScreen">
     <Border Background="#283965" Opacity=".85">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <DataGrid Name="dataGridInfo" IsReadOnly="True" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
-            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-                <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
-                    <ComboBoxItem Content="List all users" />
-                    <ComboBoxItem Content="List all tickets" />
-                    <ComboBoxItem Content="List all logins" />
-                </ComboBox>
-                <Button Style="{StaticResource ButtonStyle}" Click="btnSaveToTxt" Name="btnSaveToFile" Content="SAVE TABLE DATA"/>
-            </StackPanel>
-        </Grid>
+        <StackPanel>
+            <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource ContentControlStyleBig}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
+            <DataGrid Name="dataGridInfo" IsReadOnly="True" Height="200" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" />
+            <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
+                <ComboBoxItem Content="List all users" />
+                <ComboBoxItem Content="List all tickets" />
+                <ComboBoxItem Content="List all logins" />
+            </ComboBox>
+            <Button Style="{StaticResource ButtonStyle}" Margin="10" Click="btnSaveToTxt" Name="btnSaveToFile" Content="SAVE TABLE DATA"/>
+            <TextBlock Text="OR SEARCH FOR USER" HorizontalAlignment="Center" Style="{StaticResource ContentControlStyleSmall}"/>
+            <TextBox Width="250" Name="txtBoxSearchUser" Style="{StaticResource InputControlStyle2}" />
+            <Button Style="{StaticResource ButtonStyle}" Margin="10" Click="btnSearchUser" Name="Search" Content="SEARCH"/>
+        </StackPanel>
     </Border>
 </Window>

@@ -21,7 +21,7 @@ namespace FitnessProject
             {
                 currentUser = new User();
                 barcode = txtBarCode.Text;
-                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb";
+                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessdb";
                 MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
                 MySqlCommand command = new MySqlCommand("select * from users where barcode like " + barcode, mySqlConnection);
 

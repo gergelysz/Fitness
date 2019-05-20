@@ -6,7 +6,7 @@ namespace FitnessProject
 {
     public partial class UserData : Window
     {
-        private MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
+        private MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessdb");
         private MySqlCommand command;
 
         public UserData()
