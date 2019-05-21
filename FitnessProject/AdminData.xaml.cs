@@ -52,17 +52,17 @@ namespace FitnessProject
             switch (comboBoxSelect.SelectedIndex)
             {
                 case 0:
-                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    btnDeleteRow.Visibility = Visibility.Collapsed;
                     comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from users");
                     break;
                 case 1:
-                    RunQuery("select * from tickets");  
-                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    RunQuery("select * from tickets");
+                    btnDeleteRow.Visibility = Visibility.Collapsed;
                     comboBoxSelectListOptions.Visibility = Visibility.Visible;
                     break;
                 case 2:
-                    //btnDeleteRow.Visibility = Visibility.Visible;
+                    btnDeleteRow.Visibility = Visibility.Collapsed;
                     comboBoxSelectListOptions.Visibility = Visibility.Collapsed;
                     RunQuery("select * from logins");
                     break;

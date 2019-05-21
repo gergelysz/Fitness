@@ -62,7 +62,7 @@ namespace FitnessProject
 
         private void deleteAccount(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete your account?", "Delete account", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete your account?", "Delete account", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 ExecuteQuery("update users set active = 0 where barcode like " + MainWindow.currentUser.barcode);
                 MainWindow main = new MainWindow();
@@ -73,11 +73,28 @@ namespace FitnessProject
 
         private void btnClickUpdateUserData(object sender, RoutedEventArgs e)
         {
-            ExecuteQuery("update users set FirstName = " + txtBoxFirstName.Text +
-                ", LastName = " + txtBoxLastName.Text +
-                ", Email = " + txtBoxEmail.Text +
-                ", PhoneNumber = " + txtBoxPhoneNumber.Text +
-                " where barcode like " + MainWindow.barcode);
+            ExecuteQuery("update users set FirstName = '" + txtBoxFirstName.Text +
+                "', LastName = '" + txtBoxLastName.Text +
+                "', Email = '" + txtBoxEmail.Text +
+                "', PhoneNumber = '" + txtBoxPhoneNumber.Text +
+                "' where barcode like " + MainWindow.barcode);
+        }
+
+        private void backToTickets(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            TicketData ticket = new TicketData();
+            ticket.Show();
+            this.Close();
+        }
+
+        private void btnClickLogOut(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
         }
     }
 }

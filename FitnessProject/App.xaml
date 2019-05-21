@@ -91,7 +91,7 @@
         <Style x:Key="invalidTicketStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Red"/>
             <Setter Property="FontSize" Value="22"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="0,20"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Padding" Value="0,20,0,5"/>
