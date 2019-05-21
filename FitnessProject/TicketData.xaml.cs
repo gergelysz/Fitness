@@ -22,6 +22,7 @@ namespace FitnessProject
     {
         MySqlConnection conn = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=fitnessDb");
         public List<Ticket> tickets = new List<Ticket>();
+        public static int selectedTicket;
 
         public TicketData()
         {
@@ -91,14 +92,17 @@ namespace FitnessProject
 
         private void selectedListener(object sender, SelectionChangedEventArgs e)
         {
-            Ticket selectedTicket = new Ticket();
-            selectedTicket = tickets[(int)comboBoxTickets.SelectedItem - 1];
-            Console.WriteLine(selectedTicket.id);
+            selectedTicket = tickets[(int)comboBoxTickets.SelectedItem - 1].id;
+            Access access = new Access();
+            access.Show();
+            this.Close();
         }
 
         private void BtnTicketBuy_Click(object sender, RoutedEventArgs e)
         {
-
+            BuyTicket buyTicket = new BuyTicket();
+            buyTicket.Show();
+            this.Close();
         }
 
         private void BtnProfile_Click(object sender, RoutedEventArgs e)

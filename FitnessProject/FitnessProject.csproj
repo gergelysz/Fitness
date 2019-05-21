@@ -96,8 +96,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Access.xaml.cs">
+      <DependentUpon>Access.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminData.xaml.cs">
       <DependentUpon>AdminData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BuyTicket.xaml.cs">
+      <DependentUpon>BuyTicket.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Ticket.cs" />
     <Compile Include="Data\User.cs" />
@@ -110,7 +116,15 @@
     <Compile Include="UserData.xaml.cs">
       <DependentUpon>UserData.xaml</DependentUpon>
     </Compile>
+    <Page Include="Access.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BuyTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\tickets.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\access.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

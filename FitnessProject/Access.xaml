@@ -1,0 +1,28 @@
+﻿<Window x:Class="FitnessProject.Access"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessProject"
+        mc:Ignorable="d"
+        Title="Access" Height="550" Width="550"
+        WindowStartupLocation="CenterScreen" FontFamily="Century Gothic"
+        Style="{StaticResource accessWindowStyle}">
+    <Border Background="#283965" Opacity=".85">
+        <Grid HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+                <TextBlock Name="nameAccess" Text="Welcome, " Style="{StaticResource TitleControlStyle}"/>
+                <TextBlock Text="You entered successfully!" Style="{StaticResource TitleControlStyle}"/>
+                <TextBlock Style="{StaticResource validTicketTextStyle}">Ticket details: </TextBlock>
+                <TextBlock Name="ticketDetailsAccess" Style="{StaticResource validTicketTextStyle}"></TextBlock>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
