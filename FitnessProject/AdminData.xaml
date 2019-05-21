@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:FitnessProject"
         mc:Ignorable="d"
         Style="{StaticResource adminWindowStyle}"
-        Title="Admin panel" Height="650" Width="650" FontFamily="Century Gothic"
+        Title="Admin panel" Height="750" Width="750" FontFamily="Century Gothic"
         WindowStartupLocation="CenterScreen">
     <Border Background="#283965" Opacity=".85">
         <StackPanel>
-            <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource TitleControlStyle}" Margin="0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
+            <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource TitleControlStyle}" Margin="0" Height="80" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
             <DataGrid Name="dataGridInfo" IsReadOnly="True" Height="200" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" DataGridCell.Selected="dataGridRowSelected" />
             <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
                 <ComboBoxItem Content="List all users" />
