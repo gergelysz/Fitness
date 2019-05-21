@@ -58,7 +58,7 @@ namespace FitnessProject
                     tickets.Add(ticket);
                 }
                 tickets.TrimExcess();
-
+                
                 for (int i = 0; i < tickets.Capacity; i++)
                 {
                     if(tickets[i].valid_until != "")
@@ -81,6 +81,7 @@ namespace FitnessProject
                     optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + "\n";
                     comboBoxTickets.Items.Add(i + 1);
                 }
+                conn.Close();
             }
             else
             {

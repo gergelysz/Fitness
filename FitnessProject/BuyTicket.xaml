@@ -8,23 +8,28 @@
         Title="Buy ticket"
         Style="{StaticResource buyWindowStyle}"
         WindowStartupLocation="CenterScreen"
-        Height="650" Width="650" FontSize="18" FontFamily="Century Gothic">
+        Height="700" Width="650" FontSize="18" FontFamily="Century Gothic">
     <Border Background="#283965" Opacity=".85">
         <StackPanel Margin="16" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource ContentControlStyleBig}">REGISTER NEW ACCOUNT</TextBlock>
+            <TextBlock Style="{StaticResource ContentControlStyleBig}">SELECTING TICKET DETAILS</TextBlock>
             <Separator/>
-            <TextBlock Text="First name" Style="{StaticResource ContentControlStyleSmall}" />
-            <TextBox Name="txtFirstName" Style="{StaticResource InputControlStyle2}" />
-            <TextBlock Text="Last name" Style="{StaticResource ContentControlStyleSmall}" />
-            <TextBox Name="txtLastName" Style="{StaticResource InputControlStyle2}" />
-            <TextBlock Text="Email"  Style="{StaticResource ContentControlStyleSmall}" />
-            <TextBox Name="txtEmail" Style="{StaticResource InputControlStyle2}" />
-            <TextBlock Text="Phone number" Style="{StaticResource ContentControlStyleSmall}" />
-            <TextBox Name="txtPhoneNumber" Style="{StaticResource InputControlStyle2}"/>
-            <TextBlock Text="Date of birth" Style="{StaticResource ContentControlStyleSmall}" />
-            <DatePicker Name="datePickerBirthday" Style="{StaticResource InputControlStyle2}" />
-            <!--<Button Name="btnSubmitRegister" Style="{StaticResource ButtonStyle}" Content="SUBMIT" Click="btnSubmitRegister_Click" />
-            <Button Name="btnBackToLogin" Style="{StaticResource ButtonStyle}" Content="BACK TO LOGIN PAGE" Click="BtnBackToLogin_Click" Width="200" />-->
+            <TextBlock Text="Valid from" Style="{StaticResource ContentControlStyleSmall}" />
+            <DatePicker Name="validFromBuy"/>
+            <TextBlock Text="Valid until" Style="{StaticResource ContentControlStyleSmall}" />
+            <DatePicker Name="validUntilBuy" SelectedDate="{Binding PropertyName, StringFormat=YYYY-MM-dd}"/>
+            <TextBlock Text="Number of entries"  Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="nrOfEntriesBuy" Style="{StaticResource InputControlStyle2}" />
+            <TextBlock Text="Number of entries per day" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="nrOfEntriesDayBuy" Style="{StaticResource InputControlStyle2}"/>
+            <TextBlock Text="Hour from" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="hourFromBuy" Style="{StaticResource InputControlStyle2}"/>
+            <TextBlock Text="Hour Until" Style="{StaticResource ContentControlStyleSmall}" />
+            <TextBox Name="hourUntilBuy" Style="{StaticResource InputControlStyle2}"/>
+            <RadioButton Name="weekendBuy" Margin="20,20" HorizontalAlignment="Center" Foreground="White">Weekend</RadioButton>
+            <StackPanel Orientation="Horizontal">
+                <Button Name="backToTicket" Margin="20,0" Style="{StaticResource ButtonStyle}" Content="BACK" Click="BackToTicket_Click" />
+                <Button Name="buttonBuy" Margin="20,0" Style="{StaticResource ButtonStyle}" Content="BUY" Click="ButtonBuy_Click"/>
+            </StackPanel>
         </StackPanel>
     </Border>
 </Window>
