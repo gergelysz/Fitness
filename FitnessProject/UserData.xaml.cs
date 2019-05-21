@@ -70,5 +70,14 @@ namespace FitnessProject
                 this.Close();
             } 
         }
+
+        private void btnClickUpdateUserData(object sender, RoutedEventArgs e)
+        {
+            ExecuteQuery("update users set FirstName = " + txtBoxFirstName.Text +
+                ", LastName = " + txtBoxLastName.Text +
+                ", Email = " + txtBoxEmail.Text +
+                ", PhoneNumber = " + txtBoxPhoneNumber.Text +
+                " where barcode like " + MainWindow.barcode);
+        }
     }
 }
