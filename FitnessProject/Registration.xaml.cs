@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 
 namespace FitnessProject
@@ -66,55 +67,65 @@ namespace FitnessProject
 
         private void btnSubmitRegister_Click(object sender, RoutedEventArgs e)
         {
-            // Get all barcodes in list to later check if the generated
-            // one is in the list or not.
-            OpenConnection();
-            List<string> registeredBarcodes = new List<String>();
-            command = new MySqlCommand("select barcode from users", connection);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                registeredBarcodes.Add(reader.ToString());
-            }
-            reader.Close();
-            CloseConnection();
-
-            // Generate string of length 9 with random numbers.
-            // Repeat until it's not in the registeredBarCodes list.
-            var numbers = "0123456789";
-            var stringChars = new char[9];
-            string finalString;
-            do
-            {
-                var random = new Random();
-
-                for (int i = 0; i < stringChars.Length; i++)
+            if(!string.IsNullOrWhiteSpace(txtFirstName.Text) &&
+                !string.IsNullOrWhiteSpace(txtLastName.Text) &&
+                !string.IsNullOrWhiteSpace(txtEmail.Text) &&
+                !string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
+            { 
+                // Get all barcodes in list to later check if the generated
+                // one is in the list or not.
+                OpenConnection();
+                List<string> registeredBarcodes = new List<String>();
+                command = new MySqlCommand("select barcode from users", connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    stringChars[i] = numbers[random.Next(numbers.Length)];
+                    registeredBarcodes.Add(reader.ToString());
                 }
+                reader.Close();
+                CloseConnection();
 
-                finalString = new string(stringChars);
+                // Generate string of length 9 with random numbers.
+                // Repeat until it's not in the registeredBarCodes list.
+                var numbers = "0123456789";
+                var stringChars = new char[9];
+                string finalString;
+                do
+                {
+                    var random = new Random();
 
-            } while (registeredBarcodes.Contains(finalString));
+                    for (int i = 0; i < stringChars.Length; i++)
+                    {
+                        stringChars[i] = numbers[random.Next(numbers.Length)];
+                    }
 
-            MessageBox.Show("Login barcode created: " + finalString, "Barcode");
+                    finalString = new string(stringChars);
+
+                } while (registeredBarcodes.Contains(finalString));
+
+                MessageBox.Show("Login barcode created: " + finalString, "Barcode");
 
 
-            if (!string.IsNullOrWhiteSpace(txtFirstName.Text) &&
-            !string.IsNullOrWhiteSpace(txtLastName.Text) &&
-            !string.IsNullOrWhiteSpace(txtEmail.Text))
+                if (!string.IsNullOrWhiteSpace(txtFirstName.Text) &&
+                !string.IsNullOrWhiteSpace(txtLastName.Text) &&
+                !string.IsNullOrWhiteSpace(txtEmail.Text))
+                {
+                    string addUserQuery = "insert into users(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode) values('" +
+                        txtFirstName.Text + "', '" +
+                        txtLastName.Text + "', '" +
+                        txtEmail.Text + "', '" +
+                        txtPhoneNumber.Text + "', '" +
+                        datePickerBirthday.Text + "', '" +
+                        0 + "', '" +
+                        finalString +
+                        "');";
+
+                    ExecuteQuery(addUserQuery);
+                }
+            }
+            else
             {
-                string addUserQuery = "insert into users(FirstName, LastName, Email, PhoneNumber, birthday, admin, barcode) values('" +
-                    txtFirstName.Text + "', '" +
-                    txtLastName.Text + "', '" +
-                    txtEmail.Text + "', '" +
-                    txtPhoneNumber.Text + "', '" +
-                    datePickerBirthday.Text + "', '" +
-                    0 + "', '" +
-                    finalString +
-                    "');";
-
-                ExecuteQuery(addUserQuery);
+                MessageBox.Show("Please fill all the information boxes!", "Registration unsuccessful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }
