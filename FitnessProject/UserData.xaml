@@ -17,7 +17,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
-                <TextBlock Text="Your account details: " Style="{StaticResource TitleControlStyleUser}"/>
+                <TextBlock Text="Your account details: " Style="{StaticResource TitleControlStyle}"/>
                 <TextBox Name="txtBoxFirstName" Text="FirstName" Style="{StaticResource InputControlStyle2}" Margin="10"/>
                 <TextBox Name="txtBoxLastName" Text="LastName" Style="{StaticResource InputControlStyle2}" Margin="10"/>
                 <TextBox Name="txtBoxEmail" Text="Email" Style="{StaticResource InputControlStyle2}" Margin="10"/>

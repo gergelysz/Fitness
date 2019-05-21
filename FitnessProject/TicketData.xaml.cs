@@ -39,7 +39,6 @@ namespace FitnessProject
             {
                 txtTicketMessage.Visibility = Visibility.Collapsed;
                 comboBoxTickets.Visibility = Visibility.Visible;
-                btnTicketSelect.Visibility = Visibility.Visible;
                 comboLabelTicket.Visibility = Visibility.Visible;
                 optionsTextBlockTicket.Visibility = Visibility.Visible;
 
@@ -68,7 +67,6 @@ namespace FitnessProject
                     else
                     {
                         optionsTextBlockTicket.Text = optionsTextBlockTicket.Text + (i + 1) + " Entry remained: " + tickets[i].nr_of_entries;
-                        
                     }
                     if (tickets[i].weekend)
                     {
@@ -85,21 +83,29 @@ namespace FitnessProject
             }
             else
             {
+                txtTicketMessage.Visibility = Visibility.Visible;
                 comboBoxTickets.Visibility = Visibility.Collapsed;
-                btnTicketSelect.Visibility = Visibility.Collapsed;
                 comboLabelTicket.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void BtnTicketSelect_Click(object sender, RoutedEventArgs e)
+        private void selectedListener(object sender, SelectionChangedEventArgs e)
         {
-
-
+            Ticket selectedTicket = new Ticket();
+            selectedTicket = tickets[(int)comboBoxTickets.SelectedItem - 1];
+            Console.WriteLine(selectedTicket.id);
         }
 
         private void BtnTicketBuy_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            UserData userData = new UserData();
+            userData.Show();
+            this.Close();
         }
     }
 }
