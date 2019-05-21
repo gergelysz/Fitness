@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 
 namespace FitnessProject
@@ -70,8 +71,7 @@ namespace FitnessProject
                 !string.IsNullOrWhiteSpace(txtLastName.Text) &&
                 !string.IsNullOrWhiteSpace(txtEmail.Text) &&
                 !string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
-            {
-
+            { 
                 // Get all barcodes in list to later check if the generated
                 // one is in the list or not.
                 OpenConnection();
