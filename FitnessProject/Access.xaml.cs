@@ -64,6 +64,13 @@ namespace FitnessProject
                     ticketDetailsAccess.Text = ticketDetailsAccess.Text + "Entry onlye in weekend" + '\n';
                 }
             }
+            connection.Close();
+            connection.Open();
+            MySqlCommand log = new MySqlCommand("insert into logins(barcode, ticket_id) values('"
+                + MainWindow.barcode + "', '"
+                + TicketData.selectedTicket + "');", connection);
+            log.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }
