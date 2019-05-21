@@ -73,11 +73,18 @@ namespace FitnessProject
 
         private void btnClickUpdateUserData(object sender, RoutedEventArgs e)
         {
-            ExecuteQuery("update users set FirstName = " + txtBoxFirstName.Text +
-                ", LastName = " + txtBoxLastName.Text +
-                ", Email = " + txtBoxEmail.Text +
-                ", PhoneNumber = " + txtBoxPhoneNumber.Text +
-                " where barcode like " + MainWindow.barcode);
+            ExecuteQuery("update users set FirstName = '" + txtBoxFirstName.Text +
+                "', LastName = '" + txtBoxLastName.Text +
+                "', Email = '" + txtBoxEmail.Text +
+                "', PhoneNumber = '" + txtBoxPhoneNumber.Text +
+                "' where barcode like " + MainWindow.barcode);
+        }
+
+        private void backToTickets(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            TicketData ticket = new TicketData();
+            ticket.Show();
+            this.Close();
         }
     }
 }
