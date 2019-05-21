@@ -161,5 +161,15 @@ namespace FitnessProject
         {
             btnDeleteRow.Visibility = Visibility.Visible;
         }
+
+        private void btnClickLogOut(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
+        }
     }
 }
