@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen">
     <Border Background="#283965" Opacity=".85">
         <StackPanel>
-            <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource ContentControlStyleBig}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
+            <TextBlock Text="DATA FOR USERS/TICKETS/LOGINS" Style="{StaticResource TitleControlStyle}" Margin="0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"/>
             <DataGrid Name="dataGridInfo" IsReadOnly="True" Height="200" Margin="10" ItemsSource="{Binding Path=LoadData}" AutoGenerateColumns="True" DataGridCell.Selected="dataGridRowSelected" />
             <ComboBox Name="comboBoxSelect" Margin="10" Width="200" SelectionChanged="onSelectionChanged">
                 <ComboBoxItem Content="List all users" />
@@ -25,8 +25,6 @@
                     <ComboBoxItem Content="Active tickets"/>
                     <ComboBoxItem Content="Inactive tickets"/>
                 </ComboBox>
-                <ComboBox Visibility="Collapsed" Name="comboBoxSelectListOptions2" />
-                <ComboBox Visibility="Collapsed" Name="comboBoxSelectListOptions3" />
                 <CheckBox Visibility="Collapsed" Name="checkText3" Foreground="White">Text3</CheckBox>
             </StackPanel>
             <Button Style="{StaticResource ButtonStyle}" Margin="10" Click="btnSaveToTxt" Name="btnSaveToFile" Content="SAVE TABLE DATA"/>
